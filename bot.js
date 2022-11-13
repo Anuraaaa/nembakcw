@@ -17,15 +17,15 @@ const botSay = (data) => {
         `kamu.. mau gak jadi pacar aku?`, //9
         `ga cuma itu aja, kamu mau ga jadi temen hidup aku?`, //10
         `kamu ${data?.maupacaran}? aku ga mimpi kan?`, //11
-        `yesssss.... akhirnyaaa. aku seneng banget aaaaaaa 😍😍`,
-        `hehehehe yang tadi flashback aja, lanjut ke intinya`,
-        `makasih yah sayang, kita udah sama-sama selama ini, 6 tahun`, //12
-        `itu waktu yang ga lama. Aku bener-bener respect sama wanita kaya kamu`, //13
-        `ga sedikit kita selalu salah paham eh akhirnya balik juga hehehe 😁`, //14
-        `maafin semua kesalahan aku yah 😔`, //15
-        `tas, happy anniv yang ke-6 yah, ini aku anwar yang kamu kenal, aku sayang kamu 😊`, //16
-        `pokonya dengan ini kamu resmi jadi teman hidup aku, selamanya!`, //17
-        `love u ❤`, //18
+        `yesssss.... akhirnyaaa. aku seneng banget aaaaaaa 😍😍`,//12
+        `hehehehe yang tadi flashback aja, lanjut ke intinya`, //13
+        `makasih yah sayang, kita udah sama-sama selama ini, 6 tahun`, //14
+        `itu waktu yang ga bentar. Aku bener-bener respect sama wanita kaya kamu`, //15
+        `ga sedikit kita selalu salah paham eh akhirnya balik juga hehehe 😁`, //16
+        `maafin semua kesalahan aku yah 😔`, //17
+        `tas, happy anniv yang ke-6 yah, ini aku anwar yang kamu kenal, aku sayang kamu 😊`, //18
+        `pokonya dengan ini kamu resmi jadi teman hidup aku, selamanya!`, //19
+        `love u ❤`, //20
     ]
 }
 
@@ -60,11 +60,13 @@ function botStart() {
         }
         else if (init === 7) {
 
-            if (jawaban.value != "engga") {
+            if (jawaban.value != "engga" && jawaban.value != "Engga") {
+                init = 6
                 return alert("kamu harus jawab engga")
             }
-
-            botDelay({nothavepacar: jawaban.value}, 7)
+            else {
+                botDelay({nothavepacar: jawaban.value}, 7)
+            }
         }
         else if (init === 8) {
             botDelay({nama: usersData[0]}, 8)
@@ -76,10 +78,12 @@ function botStart() {
             botDelay(jawaban.value, 10)
         }
         else if (init === 11) {
-            if (jawaban.value != "mau") {
+            if (jawaban.value != "mau" && jawaban.value != "Mau") {
+                init = 10
                 return alert("kamu harus jawab mau")
+            } else {
+                botDelay({maupacaran: jawaban.value}, 11)
             }
-            botDelay({maupacaran: jawaban.value}, 11)
         }
         else if (init === 12) {
             botDelay(jawaban.value, 12)
@@ -103,6 +107,12 @@ function botStart() {
             botDelay(jawaban.value, 18)
         }
         else if (init === 19) {
+            botDelay(jawaban.value, 19)
+        }
+        else if (init === 20) {
+            botDelay(jawaban.value, 20)
+        }
+        else if (init === 21) {
             botFinish()
         }
         else {
